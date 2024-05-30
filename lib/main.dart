@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
-import 'dart:convert';
+import 'package:consumir/autenticacao_usuario/login_screen.dart';
+import 'package:consumir/autenticacao_usuario/register.dart';
+import 'package:consumir/autenticacao_psicologo/login_psicologo.dart';
+import 'package:consumir/autenticacao_psicologo/registro_psicologo.dart';
+import 'package:consumir/modulos.dart'; // Importe a tela de escolha de tipo de registro
 
 void main() {
   runApp(MyApp());
@@ -10,67 +13,18 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter API Demo',
+      title: 'Flutter Auth Demo',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: MyHomePage(),
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  @override
-  _MyHomePageState createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  List<dynamic> _usuarios = [];
-  String _errorMessage = '';
-
-  @override
-  void initState() {
-    super.initState();
-    fetchUsuarios();
-  }
-
-  Future<void> fetchUsuarios() async {
-    try {
-      final response = await http.get(Uri.parse('http://192.168.18.4:3000/usuarios'));
-
-      print('Response status code: ${response.statusCode}');
-      print('Response body: ${response.body}');
-
-      // Restante do código...
-    } catch (e) {
-      print('Error fetching usuarios: $e');
-      setState(() {
-        _errorMessage = 'Falha ao carregar os dados: $e';
-      });
-    }
-  }
-
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Lista de Usuários'),
-      ),
-      body: _errorMessage.isNotEmpty
-          ? Center(child: Text(_errorMessage))
-          : _usuarios.isEmpty
-          ? Center(child: CircularProgressIndicator())
-          : ListView.builder(
-        itemCount: _usuarios.length,
-        itemBuilder: (context, index) {
-          final usuario = _usuarios[index];
-          return ListTile(
-            title: Text(usuario['name'] ?? 'Sem nome'),
-            subtitle: Text(usuario['email'] ?? 'Sem email'),
-          );
-        },
-      ),
+      initialRoute: '/choose_registration_type', // Defina a rota inicial como a tela de escolha do tipo de registro
+      routes: {
+        '/choose_registration_type': (context) => ChooseRegistrationTypeScreen(), // Rota para a tela de escolha do tipo de registro
+        '/login_user': (context) => LoginScreen(), // Rota para o login de usuário comum
+        '/register_user': (context) => RegisterScreen(), // Rota para o registro de usuário comum
+        '/login_psychologist': (context) => LoginPsychologistScreen(), // Rota para o login de psicólogo
+        '/register_psychologist': (context) => RegisterPsychologistScreen(), // Rota para o registro de psicólogo
+      },
     );
   }
 }
