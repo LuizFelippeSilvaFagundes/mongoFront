@@ -11,10 +11,19 @@ dependencies:
     sdk: flutter
   http: ^0.13.3
 
+  provider: ^6.0.1
+  flutter_mobx: ^2.0.2
+  hive: ^2.0.4
+  hive_flutter: ^1.1.0
+  cupertino_icons: ^1.0.2
+
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^3.0.0
+  build_runner: ^2.1.5
+  mobx_codegen: ^2.0.4
 
 flutter:
   uses-material-design: true
