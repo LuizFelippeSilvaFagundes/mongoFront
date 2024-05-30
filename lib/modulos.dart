@@ -5,7 +5,7 @@ class ChooseRegistrationTypeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Escolha o Tipo de Registro'),
+        title: Text('Login'),
       ),
       body: Center(
         child: Column(
@@ -13,16 +13,16 @@ class ChooseRegistrationTypeScreen extends StatelessWidget {
           children: <Widget>[
             ElevatedButton(
               onPressed: () {
-                Navigator.pushNamed(context, '/register_user');
+                Navigator.pushNamed(context, '/login_user');
               },
-              child: Text('Cadastro como Usuário'),
+              child: Text('Paciente'),
             ),
             SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
-                Navigator.pushNamed(context, '/register_psychologist');
+                Navigator.pushNamed(context, '/login_psychologist');
               },
-              child: Text('Cadastro como Psicólogo'),
+              child: Text('Psicólogo'),
             ),
           ],
         ),
