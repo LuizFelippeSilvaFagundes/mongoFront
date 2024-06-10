@@ -10,17 +10,17 @@ class Logo extends StatelessWidget {
       children: [
         Padding(
           padding: const EdgeInsets.only(bottom: 20),
-          child: Image.asset('images/host.png', width: 80, height: 125),
+          child: Image.asset('im/cards_normalz.png', width: 80, height: 125),
         ),
         Padding(
           padding: const EdgeInsets.only(bottom: 40),
           child: RichText(
             text: TextSpan(
-              text: 'Round 6 ',
+              text: 'Jogo da ',
               style: DefaultTextStyle.of(context).style.copyWith(fontSize: 30),
               children: const [
                 TextSpan(
-                  text: 'Memory',
+                  text: 'Memoria',
                   style: TextStyle(color: BrainTheme.color),
                 )
               ],

@@ -80,7 +80,7 @@ class _GameScoreState extends State<GameScore> {
             ),
           ],
         ),
-        Image.asset('images/host.png', width: 38, height: 60),
+        Image.asset('im/cards_normalz.png', width: 38, height: 60),
         TextButton(
           child: const Text('Sair', style: TextStyle(fontSize: 18)),
           onPressed: () => Navigator.pop(context),

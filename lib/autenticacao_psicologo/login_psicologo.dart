@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:consumir/autenticacao_psicologo/registro_psicologo.dart'; // Certifique-se de que o caminho está correto
+import 'package:consumir/Round/pages/homeScreen.dart'; // Importe a tela HomeScreen
 
 class LoginPsychologistScreen extends StatefulWidget {
   @override
@@ -18,7 +19,7 @@ class _LoginPsychologistScreenState extends State<LoginPsychologistScreen> {
     final String password = _passwordController.text;
 
     final response = await http.post(
-      Uri.parse('http://localhost:3000/login_psychologist'), // Certifique-se de que a URL está correta
+      Uri.parse('http://http://10.0.2.2:1000/login_psychologist'),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
       },
@@ -29,10 +30,11 @@ class _LoginPsychologistScreenState extends State<LoginPsychologistScreen> {
     );
 
     if (response.statusCode == 200) {
-      final responseData = jsonDecode(response.body);
-      final String token = responseData['token'];
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Login bem-sucedido')));
-      // Você pode armazenar o token e navegar para outra tela
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => HomeScreen1()),
+      );
     } else {
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Falha no login')));
     }
@@ -48,6 +50,7 @@ class _LoginPsychologistScreenState extends State<LoginPsychologistScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.blue,
       body: Center(
         child: SingleChildScrollView(
           child: Padding(
@@ -57,7 +60,7 @@ class _LoginPsychologistScreenState extends State<LoginPsychologistScreen> {
               child: Column(
                 children: [
                   Image.asset(
-                    "images/logo_vi.png",
+                    "im/login.png",
                     width: 210,
                   ),
                   const SizedBox(height: 15),
@@ -77,10 +80,12 @@ class _LoginPsychologistScreenState extends State<LoginPsychologistScreen> {
                         return null;
                       },
                       decoration: const InputDecoration(
-                        icon: Icon(Icons.person),
+                        icon: Icon(Icons.person, color: Colors.white),
                         border: InputBorder.none,
                         hintText: "Email",
+                        hintStyle: TextStyle(color: Colors.white), // Definindo a cor do texto do hint
                       ),
+                      style: TextStyle(color: Colors.white), // Definindo a cor do texto
                     ),
                   ),
                   Container(
@@ -100,10 +105,12 @@ class _LoginPsychologistScreenState extends State<LoginPsychologistScreen> {
                       },
                       obscureText: true,
                       decoration: InputDecoration(
-                        icon: const Icon(Icons.lock),
+                        icon: const Icon(Icons.lock, color: Colors.white),
                         border: InputBorder.none,
                         hintText: "Password",
+                        hintStyle: TextStyle(color: Colors.white), // Definindo a cor do texto do hint
                       ),
+                      style: TextStyle(color: Colors.white), // Definindo a cor do texto
                     ),
                   ),
                   const SizedBox(height: 10),
@@ -128,7 +135,10 @@ class _LoginPsychologistScreenState extends State<LoginPsychologistScreen> {
                   ),
                   TextButton(
                     onPressed: _navigateToRegisterPsychologistScreen,
-                    child: const Text("Ainda não se cadastrou?"),
+                    child: const Text(
+                      "Ainda não se cadastrou?",
+                      style: TextStyle(color: Colors.white), // Definindo a cor do texto do botão
+                    ),
                   ),
                 ],
               ),

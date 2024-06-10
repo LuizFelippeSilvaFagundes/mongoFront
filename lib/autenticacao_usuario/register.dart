@@ -23,7 +23,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
     try {
       final response = await http.post(
-        Uri.parse('http://localhost:3000/register_user'), // Altere para a URL do seu servidor
+        Uri.parse('http://10.0.2.2:1000/register_user'), // Altere para a URL do seu servidor
         headers: <String, String>{
           'Content-Type': 'application/json; charset=UTF-8',
         },
@@ -53,6 +53,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.blue,
       body: Center(
         child: SingleChildScrollView(
           child: Padding(
@@ -62,7 +63,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
               child: Column(
                 children: [
                   Image.asset(
-                    "images/logo_vi.png",
+                    "im/logo_vi.png",
                     width: 210,
                   ),
                   const SizedBox(height: 15),
@@ -82,10 +83,12 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         return null;
                       },
                       decoration: const InputDecoration(
-                        icon: Icon(Icons.person),
+                        icon: Icon(Icons.person, color: Colors.white),
                         border: InputBorder.none,
                         hintText: "Email",
+                        hintStyle: TextStyle(color: Colors.white),
                       ),
+                      style: TextStyle(color: Colors.white),
                     ),
                   ),
                   Container(
@@ -105,10 +108,12 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       },
                       obscureText: true,
                       decoration: InputDecoration(
-                        icon: const Icon(Icons.lock),
+                        icon: const Icon(Icons.lock, color: Colors.white),
                         border: InputBorder.none,
                         hintText: "Password",
+                        hintStyle: TextStyle(color: Colors.white),
                       ),
+                      style: TextStyle(color: Colors.white),
                     ),
                   ),
                   Container(
@@ -126,11 +131,13 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         }
                         return null;
                       },
-                      decoration: const InputDecoration(
-                        icon: Icon(Icons.email),
+                      decoration: InputDecoration(
+                        icon: Icon(Icons.email, color: Colors.white),
                         border: InputBorder.none,
                         hintText: "Psychologist Email",
+                        hintStyle: TextStyle(color: Colors.white),
                       ),
+                      style: TextStyle(color: Colors.white),
                     ),
                   ),
                   Container(
@@ -148,11 +155,13 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         }
                         return null;
                       },
-                      decoration: const InputDecoration(
-                        icon: Icon(Icons.person),
+                      decoration: InputDecoration(
+                        icon: Icon(Icons.person, color: Colors.white),
                         border: InputBorder.none,
                         hintText: "User Name",
+                        hintStyle: TextStyle(color: Colors.white),
                       ),
+                      style: TextStyle(color: Colors.white),
                     ),
                   ),
                   const SizedBox(height: 10),
@@ -178,7 +187,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      const Text("Already have an account?"),
+                      const Text("Already have an account?", style: TextStyle(color: Colors.white)),
                       TextButton(
                         onPressed: () {
                           Navigator.push(
@@ -186,7 +195,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             MaterialPageRoute(builder: (context) => LoginScreen()),
                           );
                         },
-                        child: const Text("Login"),
+                        child: const Text("Login", style: TextStyle(color: Colors.white)),
                       ),
                     ],
                   ),

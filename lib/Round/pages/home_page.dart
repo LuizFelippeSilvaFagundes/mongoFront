@@ -30,11 +30,11 @@ class HomePage extends StatelessWidget {
             const Logo(),
             StartButton(
               title: 'Modo Normal',
-              color: Colors.white,
+              color: BrainTheme.color,
               action: () => selecionarNivel(Modo.normal, context),
             ),
             StartButton(
-              title: 'Modo Round 6',
+              title: 'Modo Dificil',
               color: BrainTheme.color,
               action: () => selecionarNivel(Modo.round6, context),
             ),

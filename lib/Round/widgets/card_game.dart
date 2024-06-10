@@ -43,11 +43,11 @@ class _CardGameState extends State<CardGame> with SingleTickerProviderStateMixin
 
   AssetImage getImage(double angulo) {
     if (angulo > 0.5 * pi) {
-      return AssetImage('images/${widget.gameOpcao.opcao.toString()}.png');
+      return AssetImage('im/${widget.gameOpcao.opcao.toString()}.png');
     } else {
       return widget.modo == Modo.normal
-          ? const AssetImage('images/card_normal.png')
-          : const AssetImage('images/card_round.png');
+          ? const AssetImage('im/fundo_jogo.png')
+          : const AssetImage('im/fundo_jogo.png');
     }
   }
 

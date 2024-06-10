@@ -5,16 +5,12 @@ import 'package:consumir/Round/constants.dart';
 import 'package:consumir/Round/controllers/game_controller.dart';
 import 'package:consumir/Round/game_settings.dart';
 import 'package:consumir/Round/models/game_opcao.dart';
-
 import 'package:consumir/Round/models/game_play.dart';
-import 'package:consumir/Round/theme.dart';
 import 'package:consumir/Round/widgets/card_game.dart';
 import 'package:consumir/Round/widgets/feedback_game.dart';
 import 'package:consumir/Round/widgets/game_score.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:provider/provider.dart';
-
-import '../models/game_opcao.dart';
 
 class GamePage extends StatelessWidget {
   final GamePlay gamePlay;

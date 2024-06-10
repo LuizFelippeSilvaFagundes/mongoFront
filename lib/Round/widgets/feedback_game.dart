@@ -10,7 +10,7 @@ class FeedbackGame extends StatelessWidget {
   const FeedbackGame({Key? key, required this.resultado}) : super(key: key);
 
   String getResultado() {
-    return resultado == Resultado.aprovado ? 'aprovado' : 'eliminado';
+    return resultado == Resultado.aprovado ? 'VENCEU' : 'PERDEU';
   }
 
   @override
@@ -27,7 +27,7 @@ class FeedbackGame extends StatelessWidget {
           ),
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 30),
-            child: Image.asset('images/${getResultado()}.png'),
+            child: Image.asset('im/${getResultado()}.png'),
           ),
           resultado == Resultado.eliminado
               ? StartButton(

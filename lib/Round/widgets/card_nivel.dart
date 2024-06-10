@@ -11,7 +11,7 @@ class CardNivel extends StatelessWidget {
 
   const CardNivel({Key? key, required this.gamePlay}) : super(key: key);
 
-  startGame(BuildContext context) {
+  void startGame(BuildContext context) {
     context.read<GameController>().startGame(gamePlay: gamePlay);
 
     Navigator.push(
@@ -29,18 +29,37 @@ class CardNivel extends StatelessWidget {
       onTap: () => startGame(context),
       borderRadius: const BorderRadius.all(Radius.circular(10)),
       child: Container(
-        width: 90,
-        height: 90,
+        width: 200,
+        height: 200,
         padding: const EdgeInsets.all(8),
+        margin: const EdgeInsets.only(top: 20), // Espaçamento adicionado na parte superior
         decoration: BoxDecoration(
           border: Border.all(
-            color: gamePlay.modo == Modo.normal ? Colors.white : BrainTheme.color,
+            color: gamePlay.modo == Modo.normal ? Colors.red : BrainTheme.color,
           ),
           borderRadius: const BorderRadius.all(Radius.circular(10)),
-          color: gamePlay.modo == Modo.normal ? Colors.transparent : BrainTheme.color.withOpacity(.6),
         ),
-        child: Center(
-          child: Text(gamePlay.nivel.toString(), style: const TextStyle(fontSize: 30)),
+        child: Stack(
+          children: [
+            // Imagem de fundo
+            Positioned.fill(
+              child: Image.asset(
+                'im/card.png',
+                fit: BoxFit.cover,
+              ),
+            ),
+            // Número do card
+            Center(
+              child: Text(
+                gamePlay.nivel.toString(),
+                style: const TextStyle(
+                  fontSize: 30,
+                  color: Colors.blueAccent,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+          ],
         ),
       ),
     );
